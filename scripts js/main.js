@@ -6,18 +6,29 @@ const cHeight = canvas.height;
 
 
 
-const player = new Component(50, 50, 'red', 350, 1140, ctx);
-
 
 
 let game;
+let player
 
 
 
-const startBtn = document.getElementById('start');
+const startBtnBlue = document.getElementById('start-blue');
+const startBtnPink = document.getElementById('start-pink');
 
-startBtn.addEventListener("click", () => {
+startBtnBlue.addEventListener("click", () => {
     if (!game) {
+         player = new Component(50, 50, 'blue', 350, 800, ctx);
+        game = new Game(ctx, cWidth, cHeight, player);
+        game.start();
+    } else if (game && !game.isRunning) {
+        game.reset();
+    }
+    
+});
+startBtnPink.addEventListener("click", () => {
+    if (!game) {
+         player = new Component(50, 50, 'pink', 350, 800, ctx);
         game = new Game(ctx, cWidth, cHeight, player);
         game.start();
     } else if (game && !game.isRunning) {
@@ -30,7 +41,7 @@ document.addEventListener('keydown', (e) => {
     switch(e.code) {
         
         case 'ArrowUp':
-            player.speedY -= 1;
+           player.speedY -= 1;
             break;
         case 'ArrowDown':
             player.speedY += 1;

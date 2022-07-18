@@ -29,36 +29,27 @@ class Game {
 
     stop() {
         clearInterval(this.interval);
-        this.isRunning = false ;
+        this.isRunning = false;
     }
   
-    updateObstacles() {
-      for (let i = 0; i < this.obstacles.length; i++) {
-        this.obstacles[i].x -= 1;
-        this.obstacles[i].draw();
-      }
+      updateObstacles() {
+        for (let i = 0; i < this.obstacles.length; i++) {
+          this.obstacles[i].draw();
+          if(this.obstacles[i].color === 'violet') {
+            this.obstacles[i].moveDown();
+          } else if (this.obstacles[i].color === 'aquamarine') {
+            this.obstacles[i].moveDiagonalRight();
+          } else this.obstacles[i].moveDown();
+        }
   
       this.frames += 1;
   
-      if (this.frames % 120 === 0) {
-        let x = this.width;
+      if (this.frames % 300 === 0) {
+        this.obstacles.push(new Component(20, 40, 'violet',  Math.floor(Math.random() * this.width), 0, this.ctx));
+
+        this.obstacles.push(new Component(20, 40, 'red', Math.floor(Math.random() * this.width), 0, this.ctx));
   
-        let minHeight = 20;
-  
-        let maxHeight = 200;
-  
-        let height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
-  
-        let minGap = 50;
-  
-        let maxGap = 200;
-  
-        let gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-  
-        this.obstacles.push(new Component(20, height, 'violet', x, 0, this.ctx));
-  
-        this.obstacles.push(
-          new Component(20, x - height - gap, 'aquamarine', x, height + gap, this.ctx)
+        this.obstacles.push (new Component(20, 40, 'aquamarine', Math.floor(Math.random() * this.width), 0, this.ctx)
         );
       }
     }
@@ -73,17 +64,26 @@ class Game {
         }
     };
 
+
+    checkGameWin = () => {
+      if (this.player.y <= 5) {
+        this.stop()
+        this.ctx.fillText('You won', 200, 100)
+       }
+    };
+
     score() {
         const points = Math.floor(this.frames / 5)
         this.ctx.font = '24px sans-serif'
         this.ctx.fillStyle = 'black'
-        this.ctx.fillText(`Score: ${points}`, 850, 50);
+        this.ctx.fillText(`Score: ${points}`, 40, 50);
     }
   
     updateGameArea = () => {
       this.clear();
       this.checkGameOver();
       this.updateObstacles();
+      this.checkGameWin()
       this.player.newPos();
       this.player.draw();
       this.score();
