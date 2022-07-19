@@ -6,9 +6,8 @@ const cHeight = canvas.height;
 
 
 
-
-
 let game;
+//canvas border
 let player
 
 
@@ -34,23 +33,33 @@ startBtnPink.addEventListener("click", () => {
     } else if (game && !game.isRunning) {
         game.reset();
     }
-
 });
+
+
+
 
 document.addEventListener('keydown', (e) => {
     switch(e.code) {
         
         case 'ArrowUp':
-           player.speedY -= 1;
+            if(player.y > 10)  {
+                player.speedY -= 1;
+            } else player.speedY = 0;
             break;
         case 'ArrowDown':
-            player.speedY += 1;
+            if(player.y + player.height < cHeight) {
+                player.speedY += 1;
+            } else player.speedY = 0
             break;
         case 'ArrowLeft':
-            player.speedX -= 1;
+            if (player.x > 10) {
+                player.speedX -= 1;
+            } else player.speedX = 0;
             break;
         case 'ArrowRight':
-            player.speedX += 1;
+            if (player.x + player.width < cWidth + 10) {
+                player.speedX += 1;
+            } else player.speedX = 0;
             break;
     }
 

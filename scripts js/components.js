@@ -1,5 +1,5 @@
 class Component {
-    constructor(width, height, color, x, y, ctx, imgUrl) {
+    constructor(width, height, color, x, y, ctx, imgUrl, ) {
       this.width = width;
       this.height = height;
       this.color = color;
@@ -61,6 +61,21 @@ class Component {
         this.right() < obstacle.left() || this.left() > obstacle.right()
         );
     }
+
+    crashRight(obstacle) {
+        return !(
+          this.right() < obstacle.left() 
+        );
+    }
+    crashLeft(obstacle) {
+        return !(this.left() > obstacle.right());
+    }
+    crashTop(obstacle) {
+        return !(this.bottom() < obstacle.top());
+    }
+    crashBottom(obstacle) {
+        return !(this.top() > obstacle.bottom());
+    }
 }
 
 class Zombie extends Component {
@@ -69,32 +84,124 @@ class Zombie extends Component {
         this.direction = 'south'
     }
 
-    //add the left and right methods
 
     moveDown() {
         this.y++;
-        this.direction = 'south'
+        this.direction = 'south';
     }
-    moveUp(){
+    moveUp() {
         this.y--;
-        this.direction = 'north'
+        this.direction = 'north';
     }
+
+   moveLeft() {
+        this.x++;
+        this.direction = 'east';
+    }
+
+    moveRight() {
+        this.x--;
+        this.direction = 'west';
+    } 
 
     moveDiagonalRight() {
         this.y++;
         this.x++;
         this.direction = 'south'
     }
-
-    draw(){
+draw(){ 
         if(this.direction === 'south'){
-            this.img.src = './docs/assets/images/southZombie.png'
+            this.img.src = './docs/assets/images/southZombie.png' // Image
         } else if(this.direction === 'north') {
-            this.img.src = 'link to the north'
+            this.img.src = 'link to the north' // Image
+        } else if (this.direction === 'west') {
+            this.img.src = 'link to the west' // Image
+        } else if (this.direction === 'east') {
+          this.img.src = 'link to the east' // Image
         }
-        //other 2 directions
 
-        this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
+    }
+}
+
+   
+
+    
+   //this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
+   
+
+    class Shoppingcart extends Component {
+        constructor(width, height, color, x, y, ctx /* imgUrl */){
+            super(width, height, color, x, y, ctx /* imgUrl */)
+            this.direction = 'south'
+        }
+    
+        moveDown() {
+            this.y++;
+            this.direction = 'south';
+        }
+        moveUp(){
+            this.y--;
+            this.direction = 'north';
+        }
+    
+       moveLeft(){
+            this.x++;
+            this.direction = 'east';
+        }
+    
+        moveRight() {
+            this.x--;
+            this.direction = 'west';
+        } 
+    
+        moveDiagonalRight() {
+            this.y++;
+            this.x++;
+            this.direction = 'south'
+        }
+        
+draw(){
+    if(this.direction === 'south'){
+        this.img.src = './docs/assets/images/southZombie.png' // Image
+    } else if(this.direction === 'north') {
+        this.img.src = 'link to the north' // Image
+    } else if (this.direction === 'west') {
+        this.img.src = 'link to the west' // Image
+    } else if (this.direction === 'east') {
+      this.img.src = 'link to the east' // Image
+    }
+}
+}
+/* document.addEventListener('keydown', (e) => {
+    switch(e.code) {
+        
+        case 'ArrowUp':
+           player.speedY -= 1;
+            break;
+        case 'ArrowDown':
+            player.speedY += 1;
+            break;
+        case 'ArrowLeft':
+            player.speedX -= 1;
+            break;
+        case 'ArrowRight':
+            player.speedX += 1;
+            break;
     }
 
-}
+    document.addEventListener('keyup', (e) => {
+        player.speedX = 0;
+        player.speedY = 0;
+    }); */
+
+
+/* class Kioskcart extends Shoppingcart {
+    constructor(width, height, color, x, y, ctx, imgUrl){
+        super(width, height, color, x, y, ctx, imgUrl)
+        this.direction = 'static'
+       // static staticProperty = 'someValue'
+       // static staticMethod() {
+       // return this.img.src = './docs/assets/images/southZombie.png' // Image
+    }
+ } */
+
