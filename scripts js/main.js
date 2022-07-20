@@ -17,22 +17,26 @@ const startBtnPink = document.getElementById('start-pink');
 
 startBtnBlue.addEventListener("click", () => {
     if (!game) {
-         player = new Component(50, 50, 'blue', 350, 800, ctx);
+         player = new Component(50, 50, img, 350, 800, ctx);
         game = new Game(ctx, cWidth, cHeight, player);
         game.start();
     } else if (game && !game.isRunning) {
         game.reset();
     }
-    
+
+    this.ctx.drawImage('..\doc\assets\images\cuteboy\Jump7.png')
+                   
 });
 startBtnPink.addEventListener("click", () => {
     if (!game) {
-         player = new Component(50, 50, 'pink', 350, 800, ctx);
+         player = new Component(50, 50, img, 350, 800, ctx);
         game = new Game(ctx, cWidth, cHeight, player);
         game.start();
     } else if (game && !game.isRunning) {
         game.reset();
     }
+
+      this.ctx.drawImage('..\doc\assets\images\cutegirl\Jump23.png')
 });
 
 
@@ -42,7 +46,7 @@ document.addEventListener('keydown', (e) => {
     switch(e.code) {
         
         case 'ArrowUp':
-            if(player.y > 10)  {
+            if(player.y > 10  )  {
                 player.speedY -= 1;
             } else player.speedY = 0;
             break;

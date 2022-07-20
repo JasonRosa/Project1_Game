@@ -1,17 +1,46 @@
+@font-face {
+  font-family: 'CALL OF OPS DUTY';
+  src:  url('.\doc\assets\fonts\CALL OF OPS DUTY.OTF') format('woff2'); 
+       
+}
+
+@font-face {
+  font-family: 'CHILLER';
+  src:  url('.\doc\assets\fonts\CHILLER.TTF') format('woff2'); 
+       
+}
+
+* {
+  font-family: 'CALL OF OPS DUTY';
+}
 
 #example {
-border: 1px solid black;
+border: 1px solid white;
 border-radius: 20px;
 } 
 
 .container {
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
+  text-align: center;
+  align-content: space-around;
   justify-content: center;
   align-items: center;
+  font-size: 30px;
+  margin: 60px;
 }
 
 .start-buttons {
-    padding: 1rem;
+    padding: 1em;
 }
 
+#start-blue {
+background-color: lightblue;
+color: white;
+}
+
+#start-pink {
+background-color: lightpink;
+color: white;
+}

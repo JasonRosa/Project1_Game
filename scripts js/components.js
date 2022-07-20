@@ -1,8 +1,8 @@
 class Component {
-    constructor(width, height, color, x, y, ctx, imgUrl, ) {
+    constructor(width, height, /*color,*/ x, y, ctx, imgUrl) {
       this.width = width;
       this.height = height;
-      this.color = color;
+     /* this.color = color; */
       this.x = x;
       this.y = y;
       this.ctx = ctx;
@@ -111,27 +111,24 @@ class Zombie extends Component {
     }
 draw(){ 
         if(this.direction === 'south'){
-            this.img.src = './docs/assets/images/southZombie.png' // Image
+            this.img.src = '..\doc\assets\images\zombies\3\front\Attack4.png' // Image
         } else if(this.direction === 'north') {
-            this.img.src = 'link to the north' // Image
+            this.img.src = '..\doc\assets\images\zombies\1\front\Walk24.png' // Image
         } else if (this.direction === 'west') {
-            this.img.src = 'link to the west' // Image
+            this.img.src = '..\doc\assets/\images\zombies\4\right\Attack3.png' // Image
         } else if (this.direction === 'east') {
-          this.img.src = 'link to the east' // Image
-        }
-
+          this.img.src = '..\doc\assets\images\zombies\6\left\Attack4.png' // Image
+        }  else if (this.direction === 'random') {
+         this.img.src = '..\doc\assets\images\zombies\5\front\Attack5.png' 
     }
 }
-
-   
-
-    
-   //this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
-   
+} 
+    this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
+ 
 
     class Shoppingcart extends Component {
-        constructor(width, height, color, x, y, ctx /* imgUrl */){
-            super(width, height, color, x, y, ctx /* imgUrl */)
+        constructor(width, height, color, x, y, ctx, imgUrl ){
+            super(width, height, color, x, y, ctx, imgUrl)
             this.direction = 'south'
         }
     
@@ -162,46 +159,14 @@ draw(){
         
 draw(){
     if(this.direction === 'south'){
-        this.img.src = './docs/assets/images/southZombie.png' // Image
-    } else if(this.direction === 'north') {
+        this.img.src = '..\doc\assets\images\6011-removebg-preview.png' // Image
+    /*} else if(this.direction === 'north') {
         this.img.src = 'link to the north' // Image
     } else if (this.direction === 'west') {
         this.img.src = 'link to the west' // Image
     } else if (this.direction === 'east') {
       this.img.src = 'link to the east' // Image
-    }
+    }*/
 }
 }
-/* document.addEventListener('keydown', (e) => {
-    switch(e.code) {
-        
-        case 'ArrowUp':
-           player.speedY -= 1;
-            break;
-        case 'ArrowDown':
-            player.speedY += 1;
-            break;
-        case 'ArrowLeft':
-            player.speedX -= 1;
-            break;
-        case 'ArrowRight':
-            player.speedX += 1;
-            break;
     }
-
-    document.addEventListener('keyup', (e) => {
-        player.speedX = 0;
-        player.speedY = 0;
-    }); */
-
-
-/* class Kioskcart extends Shoppingcart {
-    constructor(width, height, color, x, y, ctx, imgUrl){
-        super(width, height, color, x, y, ctx, imgUrl)
-        this.direction = 'static'
-       // static staticProperty = 'someValue'
-       // static staticMethod() {
-       // return this.img.src = './docs/assets/images/southZombie.png' // Image
-    }
- } */
-
