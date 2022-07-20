@@ -19,31 +19,47 @@ class Game {
     }
   
     start = () => {
-       for (let i = 0; i <= 4; i++) {
+       for (let i = 0; i <= 2; i++) {
         this.kiosks.push(
           new Kioskcart(
-            70,
-            70,
-            "black",
+            100,
+            100,
             Math.floor(Math.random() * 600),
             Math.floor(Math.random() * 900),
-            this.ctx
+            this.ctx,
+            "../doc/assets/images/icecreamcart.png"
           )
         );
-      } 
+      }
+
+       /* for (let i = 0; i <= 2; i++) {
+          this.kiosks.push(
+            new Kioskcart(
+              80,
+              80,
+              Math.floor(Math.random() * 600),
+              Math.floor(Math.random() * 900),
+              this.ctx,
+              "../doc/assets/images/icecreamcart.png"
+            )
+          );
+      } */
+
       this.shoppingCart.push(
         new Component(
           70,
           70,
-          "yellow",
           Math.floor(Math.random() * 600),
           Math.floor(Math.random() * 900),
-          this.ctx
+          this.ctx,
+          "./doc/assets/images/6011-removebg-preview.png"
         )
       );
-      this.interval = setInterval(this.updateGameArea, 1000/60);
+
+      this.interval = setInterval(this.updateGameArea, 1000 / 60);
       this.isRunning = true;
-    }
+    } 
+
 
     reset = () => {
         this.player.x = 0;
@@ -95,29 +111,12 @@ class Game {
       this.player.x += 1
       
      } else if(this.player.crashLeft(crashedKiosk)){
-      this.player.x -= 1
-      
+      this.player.x -= 1 
      }
      }
-   /*      
-      const crashedTop = this.kiosks.some((kiosk) => {
-          return this.player.crashTop(kiosk);
-       });
-
-       const crashedBottom = this.kiosks.some((kiosk) => {
-          return this.player.crashBottom(kiosk);
-       });
-
-       const crashedLeft = this.kiosks.some((kiosk) => {
-         return this.player.crashLeft(kiosk);
-       });
-
-       const crashedRight = this.kiosks.some((kiosk) => {
-         return this.player.crashRight(kiosk);
-       });
- */
-     
+  
     }
+  
 
   
       updateObstacles() {
@@ -129,25 +128,69 @@ class Game {
             this.obstacles[i].moveDiagonalRight();
           } else this.obstacles[i].moveDown();
         }
-  
-      this.frames += 1;
-  
-      if (this.frames % 60 === 0) {
-        this.obstacles.push(new Component(20, 40, 'north',  Math.floor(Math.random() * this.width), 0, this.ctx));
 
-        this.obstacles.push(new Component(20, 40, 'south', Math.floor(Math.random() * this.width), 0, this.ctx));
+      
+      this.frames += 1;
+
+      if (this.frames % 60 === 0) {
+        this.obstacles.push(
+          new Component(
+            70,
+            70,
+            Math.floor(Math.random() * this.width),
+            0,
+            this.ctx,
+            "../doc/assets/images/zombies/3/front/Attack4.png"
+          )
+        );
+          
+        this.obstacles.push(
+          new Component(
+            70,
+            70,
+            Math.floor(Math.random() * this.width),
+            0,
+            this.ctx,
+            "../doc/assets/images/zombies/1/front/Walk24.png"
+          )
+        );
   
-        this.obstacles.push (new Component(20, 40, 'left', Math.floor(Math.random() * this.width), 0, this.ctx)
+        this.obstacles.push(
+          new Component(
+            70,
+            70,
+            Math.floor(Math.random() * this.width),
+            0,
+            this.ctx,
+            "../doc/assets/images/zombies/4/right/Attack3.png"
+          )
         );
 
-        this.obstacles.push (new Component(20, 40, 'right', Math.floor(Math.random() * this.width), 0, this.ctx)
+        this.obstacles.push(
+          new Component(
+            70,
+            70,
+            Math.floor(Math.random() * this.width),
+            0,
+            this.ctx,
+            "../doc/assets/images/zombies/6/left/Attack4.png"
+          )
         );  
-        
-        this.obstacles.push (new Component(20, 40, 'random', Math.floor(Math.random() * this.width), 0, this.ctx)
+
+        this.obstacles.push(
+          new Component(
+            70,
+            70,
+            Math.floor(Math.random() * this.width),
+            0,
+            this.ctx,
+            "../doc/assets/images/zombies/5/front/Attack5.png"
+          )
         );
       }
     }
-
+    
+    
     checkGameOver = () => {
         const crashed = this.obstacles.some((obstacle) => {
             return this.player.crashWith(obstacle)
@@ -155,17 +198,13 @@ class Game {
 
         if (crashed && !this.player.hasWeapon) {
             this.stop();
-            //this.ctx.drawImage('dead image')
+            //this.ctx.drawImage("../doc/assets/images/cuteboy/Dead5.png")
             this.ctx.fillText("F#%$ I´m dead!", 200, 100) 
-            this.ctx.font = '50px bold sans-serif'
+            this.ctx.font = '100px  bold sans-serif '
             this.ctx.fillStyle = 'black'
-        } else if (crashed && !this.player2.hasWeapon) {
-          this.stop();
-          //this.ctx.drawImage('dead image')
-          this.ctx.fillText("F#%$ I´m dead!", 200, 100) 
-          this.ctx.font = '50px bold sans-serif'
-          this.ctx.fillStyle = 'black'
-    };
+        }
+        }
+     //doc\assets\images\cutegirl\Dead (7).png
 
     checkBonus = () => {
       if(this.zombiesKilled !==0 && this.zombiesKilled % 5 === 0){
@@ -184,7 +223,7 @@ class Game {
         this.messageTimer = 120;
       }
     }
-
+  
       checkPoints = () => {
         const crashes = this.obstacles.some((obstacle, i) => {
           if(this.player.crashWith(obstacle)){
@@ -199,15 +238,15 @@ class Game {
           this.points += 80 
           this.message = "Take that zombie scum!!"
           this.messageTimer = 120;
-          //this.ctx.font = '500px bold sans-serif'
-          //this.ctx.fillStyle = 'black'
+          this.ctx.font = '100px  bold sans-serif '
+          this.ctx.fillStyle = 'black'
         } 
 
     }
 
-    checkMessage() {
+    checkMessage = () => {
       if(this.message && this.messageTimer > 0){
-        this.ctx.font = 'bold 50px sans-serif'
+        this.ctx.font = '50px bold sans-serif '
         this.ctx.fillStyle = 'black'
         this.ctx.fillText(`${this.message}`, 200, 100) 
         this.messageTimer--
@@ -219,13 +258,13 @@ class Game {
       if (this.player.y <= 5) {
         this.stop()
         this.ctx.fillText("Holy sh*t I survived!", 200, 100) //how do I stylize this? can I make a direct association in CSS?
-        this.ctx.font = '500px bold sans-serif';
+        this.ctx.font = '50px bold sans-serif';
         this.ctx.fillStyle = 'black';
       }
     }
 
-    score(){
-        this.ctx.font = '24px sans-serif';
+    score = () => {
+        this.ctx.font = '24px sans-serif bold';
         this.ctx.fillStyle = 'black';
         this.ctx.fillText(`Score: ${this.points}`, 40, 50);
     };
@@ -243,7 +282,5 @@ class Game {
       this.player.draw();
       this.score();
       this.checkMessage()
-
     };
-  }
 }

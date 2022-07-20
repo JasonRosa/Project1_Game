@@ -1,17 +1,29 @@
 @font-face {
   font-family: 'CALL OF OPS DUTY';
-  src:  url('.\doc\assets\fonts\CALL OF OPS DUTY.OTF') format('woff2'); 
+  src:  url("./doc/assets/fonts/CALL OF OPS DUTY.OTF") format("woff2"); 
        
 }
 
 @font-face {
-  font-family: 'CHILLER';
-  src:  url('.\doc\assets\fonts\CHILLER.TTF') format('woff2'); 
+  font-family: "CHILLER";
+  src:  url("./doc/assets/fonts/CHILLER.TTF") format("woff2"); 
        
 }
 
 * {
   font-family: 'CALL OF OPS DUTY';
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+background-image: image("./doc/assets/images/zombiewallpaper.png");
+background-repeat: no-repeat;
 }
 
 #example {
@@ -24,11 +36,11 @@ border-radius: 20px;
   flex-direction: column;
   flex-wrap: nowrap;
   text-align: center;
-  align-content: space-around;
+  /* align-content: space-around; */
   justify-content: center;
   align-items: center;
-  font-size: 30px;
-  margin: 60px;
+  font-size: 20px;
+  /* margin: 200px; */
 }
 
 .start-buttons {
@@ -43,4 +55,27 @@ color: white;
 #start-pink {
 background-color: lightpink;
 color: white;
+}
+
+.zombie-title {
+font-family: 'CHILLER';
+font-size: 50px;
+color: darkgreen;
+}
+
+.main-title {
+  font-size: 100px;
+}
+
+.instructions {
+  word-wrap: normal;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  text-align: center;
+  /* align-content: space-around; */
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
 }

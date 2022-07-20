@@ -6,37 +6,39 @@ const cHeight = canvas.height;
 
 
 
-let game;
 //canvas border
-let player
+let game;
+let player;
 
+let boy = "../doc/assets/images/cuteboy/Jump7.png";
+let girl = "../doc/assets/images/cutegirl/Jump23.png";
+
+ /* this.ctx.drawImage('..\doc\assets\images\cuteboy\Jump7.png') */
 
 
 const startBtnBlue = document.getElementById('start-blue');
 const startBtnPink = document.getElementById('start-pink');
 
 startBtnBlue.addEventListener("click", () => {
+    player = new Component(90, 90, 350, 800, ctx, boy);
+    game = new Game(ctx, cWidth, cHeight, player);
+    game.start();
     if (!game) {
-         player = new Component(50, 50, img, 350, 800, ctx);
-        game = new Game(ctx, cWidth, cHeight, player);
-        game.start();
     } else if (game && !game.isRunning) {
         game.reset();
     }
 
-    this.ctx.drawImage('..\doc\assets\images\cuteboy\Jump7.png')
+   
                    
 });
 startBtnPink.addEventListener("click", () => {
-    if (!game) {
-         player = new Component(50, 50, img, 350, 800, ctx);
+        player = new Component(90, 90, 350, 800, ctx, "../doc/assets/images/cutegirl/Jump23.png")
         game = new Game(ctx, cWidth, cHeight, player);
         game.start();
-    } else if (game && !game.isRunning) {
+        if (!game) {    
+         } else if (game && !game.isRunning) {
         game.reset();
     }
-
-      this.ctx.drawImage('..\doc\assets\images\cutegirl\Jump23.png')
 });
 
 
@@ -71,6 +73,4 @@ document.addEventListener('keydown', (e) => {
         player.speedX = 0;
         player.speedY = 0;
     });
-
-
 })

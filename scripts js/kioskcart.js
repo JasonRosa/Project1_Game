@@ -1,12 +1,10 @@
 class Kioskcart extends Component {
-    constructor (width, height, color, x, y, ctx) {
-        super(width, height, color, x, y, ctx)
-        this.direction = "static";
+    constructor (width, height, x, y, ctx, img) {
+        super(width, height, x, y, ctx, img)
     }
 
     drawBoard() {
-        this.ctx.fillStyle = this.color;
-        this.ctx.fillRect(this.x , this.y, this.width, this.height);
+        this.ctx.drawImage(this.img, this.x , this.y, this.width, this.height);
     }
 }
 
