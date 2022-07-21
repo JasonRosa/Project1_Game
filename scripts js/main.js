@@ -10,8 +10,8 @@ const cHeight = canvas.height;
 let game;
 let player;
 
-let boy = "../doc/assets/images/cuteboy/Jump7.png";
-let girl = "../doc/assets/images/cutegirl/Jump23.png";
+let boy = "./doc/assets/images/cuteboy/Jump7.png";
+let girl = "./doc/assets/images/cutegirl/Jump23.png";
 
  /* this.ctx.drawImage('..\doc\assets\images\cuteboy\Jump7.png') */
 
@@ -20,10 +20,10 @@ const startBtnBlue = document.getElementById('start-blue');
 const startBtnPink = document.getElementById('start-pink');
 
 startBtnBlue.addEventListener("click", () => {
-    player = new Component(90, 90, 350, 800, ctx, boy);
-    game = new Game(ctx, cWidth, cHeight, player);
-    game.start();
     if (!game) {
+        player = new Component(150, 150, 350, 800, ctx, boy, 'boy');
+        game = new Game(ctx, cWidth, cHeight, player);
+        game.start();
     } else if (game && !game.isRunning) {
         game.reset();
     }
@@ -32,10 +32,10 @@ startBtnBlue.addEventListener("click", () => {
                    
 });
 startBtnPink.addEventListener("click", () => {
-        player = new Component(90, 90, 350, 800, ctx, "../doc/assets/images/cutegirl/Jump23.png")
-        game = new Game(ctx, cWidth, cHeight, player);
-        game.start();
-        if (!game) {    
+    if (!game) {    
+            player = new Component(150, 150, 350, 800, ctx, girl, 'girl')
+            game = new Game(ctx, cWidth, cHeight, player);
+            game.start();
          } else if (game && !game.isRunning) {
         game.reset();
     }
@@ -74,3 +74,10 @@ document.addEventListener('keydown', (e) => {
         player.speedY = 0;
     });
 })
+
+let myAudio = new Audio("./doc/assets/sounds/music.wav");
+myAudio.loop = true;
+
+
+
+

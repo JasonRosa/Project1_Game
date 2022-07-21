@@ -1,6 +1,7 @@
 class Game {
     constructor(ctx, width, height, player) {
       this.frames = 0;
+      this.start;
       this.ctx = ctx;
       this.width = width;
       this.height = height;
@@ -15,42 +16,39 @@ class Game {
       this.zombiesKilled = 0;
       this.message = ''
       this.messageTimer = 0;
-  
+      const img = new Image()
+      img.addEventListener('load', () => {})
+      img.src = './doc/assets/images/Dead_text.png'
+      this.img = img
+     /* const img2 = new Image()
+      img.addEventListener('load', () => {})
+      img.src = './doc/assets/images/win-text.png'
+      this.img = img2;*/
     }
   
     start = () => {
-       for (let i = 0; i <= 2; i++) {
+       for (let i = 0; i <= 1; i++) {
         this.kiosks.push(
           new Kioskcart(
-            100,
-            100,
+            200,
+            200,
             Math.floor(Math.random() * 600),
-            Math.floor(Math.random() * 900),
+            Math.floor(Math.random() * (1000 - 350 + 1) + 350),
             this.ctx,
             "../doc/assets/images/icecreamcart.png"
           )
         );
+
+
       }
 
-       /* for (let i = 0; i <= 2; i++) {
-          this.kiosks.push(
-            new Kioskcart(
-              80,
-              80,
-              Math.floor(Math.random() * 600),
-              Math.floor(Math.random() * 900),
-              this.ctx,
-              "../doc/assets/images/icecreamcart.png"
-            )
-          );
-      } */
 
       this.shoppingCart.push(
         new Component(
-          70,
-          70,
+          100,
+          100,
           Math.floor(Math.random() * 600),
-          Math.floor(Math.random() * 900),
+          Math.floor(Math.random() * (1000 - 500 + 1) + 500 ),
           this.ctx,
           "./doc/assets/images/6011-removebg-preview.png"
         )
@@ -58,14 +56,19 @@ class Game {
 
       this.interval = setInterval(this.updateGameArea, 1000 / 60);
       this.isRunning = true;
+
+      
+      myAudio.play();
+      //myvideo.play()
     } 
 
 
     reset = () => {
-        this.player.x = 0;
-        this.player.y = 110;
+        this.player.x = 450;
+        this.player.y = 900;
         this.frames = 0;
         this.obstacles = [];
+        this.zombiesKilled = 0;
         this.start();
     };
   
@@ -76,6 +79,8 @@ class Game {
     stop() {
         clearInterval(this.interval);
         this.isRunning = false;
+        myAudio.pause();
+       //myVideo.pause();
     }
 
     drawKiosk() {
@@ -117,7 +122,18 @@ class Game {
   
     }
   
-
+    updateCart(){
+      if (this.frames % 300 === 0) {
+        this.shoppingCart.push( new Component(
+          90,
+          90,
+          Math.floor(Math.random() * 600),
+          Math.floor(Math.random() * (1000 - 500 + 1) + 500 ),
+          this.ctx,
+          "./doc/assets/images/6011-removebg-preview.png"
+        ))
+      }
+    }
   
       updateObstacles() {
         for (let i = 0; i < this.obstacles.length; i++) {
@@ -135,56 +151,56 @@ class Game {
       if (this.frames % 60 === 0) {
         this.obstacles.push(
           new Component(
-            70,
-            70,
+            90,
+            90,
             Math.floor(Math.random() * this.width),
             0,
             this.ctx,
-            "../doc/assets/images/zombies/3/front/Attack4.png"
+            "./doc/assets/images/zombies/3/front/Attack4.png"
           )
         );
           
         this.obstacles.push(
           new Component(
-            70,
-            70,
+            90,
+            90,
             Math.floor(Math.random() * this.width),
             0,
             this.ctx,
-            "../doc/assets/images/zombies/1/front/Walk24.png"
+            "./doc/assets/images/zombies/1/front/Walk24.png"
           )
         );
   
         this.obstacles.push(
           new Component(
-            70,
-            70,
+            90,
+            90,
             Math.floor(Math.random() * this.width),
             0,
             this.ctx,
-            "../doc/assets/images/zombies/4/right/Attack3.png"
+            "./doc/assets/images/zombies/4/right/Attack3.png"
           )
         );
 
         this.obstacles.push(
           new Component(
-            70,
-            70,
+            90,
+            90,
             Math.floor(Math.random() * this.width),
             0,
             this.ctx,
-            "../doc/assets/images/zombies/6/left/Attack4.png"
+            "./doc/assets/images/zombies/6/left/Attack4.png"
           )
         );  
 
         this.obstacles.push(
           new Component(
-            70,
-            70,
+            90,
+            90,
             Math.floor(Math.random() * this.width),
             0,
             this.ctx,
-            "../doc/assets/images/zombies/5/front/Attack5.png"
+            "./doc/assets/images/zombies/5/front/Attack5.png"
           )
         );
       }
@@ -197,14 +213,19 @@ class Game {
         });
 
         if (crashed && !this.player.hasWeapon) {
-            this.stop();
-            //this.ctx.drawImage("../doc/assets/images/cuteboy/Dead5.png")
-            this.ctx.fillText("F#%$ I´m dead!", 200, 100) 
-            this.ctx.font = '100px  bold sans-serif '
-            this.ctx.fillStyle = 'black'
+          
+          if(this.player.gender === 'boy') {
+            this.player.img.src = './doc/assets/images/cuteboy/Dead5.png'
+          } else if (this.player.gender === 'girl') {
+            this.player.img.src = './doc/assets/images/cutegirl/Dead7.png'
+          }
+          this.stop();
+          this.ctx.drawImage(this.img, 90, 90)
+          this.player.draw()
+          
         }
         }
-     //doc\assets\images\cutegirl\Dead (7).png
+   
 
     checkBonus = () => {
       if(this.zombiesKilled !==0 && this.zombiesKilled % 5 === 0){
@@ -219,7 +240,7 @@ class Game {
         this.shoppingCart = [];
         this.player.hasWeapon = true;
         this.points += 30
-        this.message = "Let´s kick some zombie a$$!"
+        this.message = "Go kick some zombie a$$!"
         this.messageTimer = 120;
       }
     }
@@ -236,8 +257,10 @@ class Game {
           //this.shoppingCart = [];
           this.zombiesKilled++;
           this.points += 80 
-          this.message = "Take that zombie scum!!"
+         // this.img.src = '.doc/assets/images/win-text.png'
+          this.message = 'Take that zombie scum!'
           this.messageTimer = 120;
+          //this.stop()
           this.ctx.font = '100px  bold sans-serif '
           this.ctx.fillStyle = 'black'
         } 
@@ -256,6 +279,7 @@ class Game {
 
     checkGameWin = () => {
       if (this.player.y <= 5) {
+      //  this.img.src = '.doc/assets/images/win-text.png'
         this.stop()
         this.ctx.fillText("Holy sh*t I survived!", 200, 100) //how do I stylize this? can I make a direct association in CSS?
         this.ctx.font = '50px bold sans-serif';
@@ -264,7 +288,7 @@ class Game {
     }
 
     score = () => {
-        this.ctx.font = '24px sans-serif bold';
+        this.ctx.font = '62px bold sans-serif';
         this.ctx.fillStyle = 'black';
         this.ctx.fillText(`Score: ${this.points}`, 40, 50);
     };
@@ -277,6 +301,7 @@ class Game {
       this.checkBonus()
       this.checkKioksCollision()
       this.updateObstacles();
+      this.updateCart()
       this.checkGameWin()
       this.player.newPos();
       this.player.draw();
