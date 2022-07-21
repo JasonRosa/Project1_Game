@@ -35,7 +35,7 @@ class Game {
             Math.floor(Math.random() * 600),
             Math.floor(Math.random() * (1000 - 350 + 1) + 350),
             this.ctx,
-            "../doc/assets/images/icecreamcart.png"
+            "./doc/assets/images/icecreamcart.png"
           )
         );
 
