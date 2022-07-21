@@ -10,8 +10,8 @@ const cHeight = canvas.height;
 let game;
 let player;
 
-let boy = "./doc/assets/images/cuteboy/Jump7.png";
-let girl = "./doc/assets/images/cutegirl/Jump23.png";
+let boy = "./docs/assets/images/cuteboy/Jump7.png";
+let girl = "./docs/assets/images/cutegirl/Jump23.png";
 
  /* this.ctx.drawImage('..\doc\assets\images\cuteboy\Jump7.png') */
 
@@ -75,7 +75,7 @@ document.addEventListener('keydown', (e) => {
     });
 })
 
-let myAudio = new Audio("./doc/assets/sounds/music.wav");
+let myAudio = new Audio("./docs/assets/sounds/music.wav");
 myAudio.loop = true;
 
 

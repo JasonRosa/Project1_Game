@@ -18,7 +18,7 @@ class Game {
       this.messageTimer = 0;
       const img = new Image()
       img.addEventListener('load', () => {})
-      img.src = './doc/assets/images/Dead_text.png'
+      img.src = './docs/assets/images/Dead_text.png'
       this.img = img
      /* const img2 = new Image()
       img.addEventListener('load', () => {})
@@ -35,7 +35,7 @@ class Game {
             Math.floor(Math.random() * 600),
             Math.floor(Math.random() * (1000 - 350 + 1) + 350),
             this.ctx,
-            "./doc/assets/images/icecreamcart.png"
+            "./docs/assets/images/icecreamcart.png"
           )
         );
 
@@ -50,7 +50,7 @@ class Game {
           Math.floor(Math.random() * 600),
           Math.floor(Math.random() * (1000 - 500 + 1) + 500 ),
           this.ctx,
-          "./doc/assets/images/6011-removebg-preview.png"
+          "./docs/assets/images/6011-removebg-preview.png"
         )
       );
 
@@ -130,7 +130,7 @@ class Game {
           Math.floor(Math.random() * 600),
           Math.floor(Math.random() * (1000 - 500 + 1) + 500 ),
           this.ctx,
-          "./doc/assets/images/6011-removebg-preview.png"
+          "./docs/assets/images/6011-removebg-preview.png"
         ))
       }
     }
@@ -156,7 +156,7 @@ class Game {
             Math.floor(Math.random() * this.width),
             0,
             this.ctx,
-            "./doc/assets/images/zombies/3/front/Attack4.png"
+            "./docs/assets/images/zombies/3/front/Attack4.png"
           )
         );
           
@@ -167,7 +167,7 @@ class Game {
             Math.floor(Math.random() * this.width),
             0,
             this.ctx,
-            "./doc/assets/images/zombies/1/front/Walk24.png"
+            "./docs/assets/images/zombies/1/front/Walk24.png"
           )
         );
   
@@ -178,7 +178,7 @@ class Game {
             Math.floor(Math.random() * this.width),
             0,
             this.ctx,
-            "./doc/assets/images/zombies/4/right/Attack3.png"
+            "./docs/assets/images/zombies/4/right/Attack3.png"
           )
         );
 
@@ -189,7 +189,7 @@ class Game {
             Math.floor(Math.random() * this.width),
             0,
             this.ctx,
-            "./doc/assets/images/zombies/6/left/Attack4.png"
+            "./docs/assets/images/zombies/6/left/Attack4.png"
           )
         );  
 
@@ -200,7 +200,7 @@ class Game {
             Math.floor(Math.random() * this.width),
             0,
             this.ctx,
-            "./doc/assets/images/zombies/5/front/Attack5.png"
+            "./docs/assets/images/zombies/5/front/Attack5.png"
           )
         );
       }
@@ -215,9 +215,9 @@ class Game {
         if (crashed && !this.player.hasWeapon) {
           
           if(this.player.gender === 'boy') {
-            this.player.img.src = './doc/assets/images/cuteboy/Dead5.png'
+            this.player.img.src = './docs/assets/images/cuteboy/Dead5.png'
           } else if (this.player.gender === 'girl') {
-            this.player.img.src = './doc/assets/images/cutegirl/Dead7.png'
+            this.player.img.src = './docs/assets/images/cutegirl/Dead7.png'
           }
           this.stop();
           this.ctx.drawImage(this.img, 90, 90)
