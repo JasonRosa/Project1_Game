@@ -30,8 +30,8 @@ class Game {
        for (let i = 0; i <= 1; i++) {
         this.kiosks.push(
           new Kioskcart(
-            200,
-            200,
+            100,
+            100,
             Math.floor(Math.random() * 600),
             Math.floor(Math.random() * (1000 - 350 + 1) + 350),
             this.ctx,
@@ -258,11 +258,11 @@ class Game {
           this.zombiesKilled++;
           this.points += 80 
          // this.img.src = '.doc/assets/images/win-text.png'
-          this.message = 'Take that zombie scum!'
-          this.messageTimer = 120;
+          //this.message = 'Take that zombie scum!'
+          //this.messageTimer = 120;
           //this.stop()
-          this.ctx.font = '100px  bold sans-serif '
-          this.ctx.fillStyle = 'black'
+          //this.ctx.font = '100px  bold sans-serif '
+         // this.ctx.fillStyle = 'black'
         } 
 
     }
@@ -270,7 +270,7 @@ class Game {
     checkMessage = () => {
       if(this.message && this.messageTimer > 0){
         this.ctx.font = '50px bold sans-serif '
-        this.ctx.fillStyle = 'black'
+        this.ctx.fillStyle = 'red'
         this.ctx.fillText(`${this.message}`, 200, 100) 
         this.messageTimer--
       }
@@ -281,15 +281,15 @@ class Game {
       if (this.player.y <= 5) {
       //  this.img.src = '.doc/assets/images/win-text.png'
         this.stop()
-        this.ctx.fillText("Holy sh*t I survived!", 200, 100) //how do I stylize this? can I make a direct association in CSS?
-        this.ctx.font = '50px bold sans-serif';
-        this.ctx.fillStyle = 'black';
+        //this.ctx.fillText("Holy sh*t I survived!", 200, 100) //how do I stylize this? can I make a direct association in CSS?
+       // this.ctx.font = '50px bold sans-serif';
+       // this.ctx.fillStyle = 'black';
       }
     }
 
     score = () => {
-        this.ctx.font = '62px bold sans-serif';
-        this.ctx.fillStyle = 'black';
+        this.ctx.font = '62px bold arial';
+        this.ctx.fillStyle = 'red';
         this.ctx.fillText(`Score: ${this.points}`, 40, 50);
     };
   

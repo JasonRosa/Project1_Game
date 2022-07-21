@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'CALL OF OPS DUTY';
-  src:  url("./doc/assets/fonts/CALL OF OPS DUTY.OTF") format("woff2"); 
+  src:  url("./docs/assets/fonts/CALL OF OPS DUTY.OTF") format("woff2"); 
        
 }
 
 @font-face {
   font-family: "CHILLER";
-  src:  url("./doc/assets/fonts/CHILLER.TTF") format("woff2"); 
+  src:  url("./docs/assets/fonts/CHILLER.TTF") format("woff2"); 
        
 }
 
@@ -24,7 +24,7 @@ body {
 }
 
 body {
-  background-image: url("./doc/assets/images/zombiewallpaper2.png");
+  background-image: url("./docs/assets/images/zombiewallpaper2.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -39,7 +39,7 @@ background-color: none;
 .canvas {
 margin: 5%;
 border: 10px solid rgb(19, 148, 165);
-background-image: url("./doc/assets/images/zombiemall.svg");
+background-image: url("./docs/assets/images/zombiemall.svg");
 background-repeat: no-repeat;
 background-size: cover;
 border-radius: 20px;
