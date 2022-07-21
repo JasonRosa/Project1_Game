@@ -30,10 +30,10 @@ class Game {
        for (let i = 0; i <= 1; i++) {
         this.kiosks.push(
           new Kioskcart(
-            100,
-            100,
+            200,
+            200,
             Math.floor(Math.random() * 600),
-            Math.floor(Math.random() * (1000 - 350 + 1) + 350),
+            Math.floor(Math.random() * (1000 - 350 + 1) - 350),
             this.ctx,
             "./docs/assets/images/icecreamcart.png"
           )
