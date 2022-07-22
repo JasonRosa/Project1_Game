@@ -47,22 +47,22 @@ startBtnPink.addEventListener("click", () => {
 document.addEventListener('keydown', (e) => {
     switch(e.code) {
         
-        case 'ArrowUp':
+        case 'KeyW':
             if(player.y > 10  )  {
                 player.speedY -= 1;
             } else player.speedY = 0;
             break;
-        case 'ArrowDown':
+        case 'KeyS':
             if(player.y + player.height < cHeight) {
                 player.speedY += 1;
             } else player.speedY = 0
             break;
-        case 'ArrowLeft':
+        case 'KeyA':
             if (player.x > 10) {
                 player.speedX -= 1;
             } else player.speedX = 0;
             break;
-        case 'ArrowRight':
+        case 'KeyD':
             if (player.x + player.width < cWidth + 10) {
                 player.speedX += 1;
             } else player.speedX = 0;

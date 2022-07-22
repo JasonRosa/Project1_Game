@@ -20,10 +20,10 @@ class Game {
       img.addEventListener('load', () => {})
       img.src = './docs/assets/images/Dead_text.png'
       this.img = img
-     /* const img2 = new Image()
+    /* const img2 = new Image()
       img.addEventListener('load', () => {})
       img.src = './doc/assets/images/win-text.png'
-      this.img = img2;*/
+      this.img2 = img2 */
     }
   
     start = () => {
@@ -59,7 +59,6 @@ class Game {
 
       
       myAudio.play();
-      //myvideo.play()
     } 
 
 
@@ -80,7 +79,7 @@ class Game {
         clearInterval(this.interval);
         this.isRunning = false;
         myAudio.pause();
-       //myVideo.pause();
+       
     }
 
     drawKiosk() {
@@ -240,14 +239,14 @@ class Game {
         this.shoppingCart = [];
         this.player.hasWeapon = true;
         this.points += 30
-        this.message = "Go kick some zombie a$$!"
-        this.messageTimer = 120;
+       // this.message = "Go kick some zombie a$$!"
+       // this.messageTimer = 120;
       }
     }
   
       checkPoints = () => {
         const crashes = this.obstacles.some((obstacle, i) => {
-          if(this.player.crashWith(obstacle)){
+          if(this.player.crashWith(obstacle)) {
             this.obstacles.splice(i, 1)
             return true
           } 
@@ -279,7 +278,7 @@ class Game {
 
     checkGameWin = () => {
       if (this.player.y <= 5) {
-      //  this.img.src = '.doc/assets/images/win-text.png'
+        this.img.src = '.doc/assets/images/win-text.png'
         this.stop()
         //this.ctx.fillText("Holy sh*t I survived!", 200, 100) //how do I stylize this? can I make a direct association in CSS?
        // this.ctx.font = '50px bold sans-serif';
@@ -289,8 +288,8 @@ class Game {
 
     score = () => {
         this.ctx.font = '62px bold arial';
-        this.ctx.fillStyle = 'red';
-        this.ctx.fillText(`Score: ${this.points}`, 40, 50);
+        this.ctx.fillStyle = 'white';
+        this.ctx.fillText(`SCORE: ${this.points}`, 40, 50);
     };
   
     updateGameArea = () => {
